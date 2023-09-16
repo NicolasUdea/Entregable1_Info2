@@ -1,32 +1,32 @@
 class Maquina:
-    def __init__(self,precio,stock,modelo,empresa):
-        self.__precio = precio
-        self.__stock = stock
-        self.__modelo = modelo
-        self.__empresa = empresa
+    def __init__(self):
+        self.__precio = 0
+        self.__stock = 0
+        self.__modelo = 0
+        self.__empresa = ""
     
     @property  
     def precio(self):
         return self.__precio
     @precio.setter
-    def precio(self, precio):
-        self.__precio = precio
+    def precio(self, b):
+        self.__precio = b
 
     @property  
     def stock(self):
         return self.__stock
 
     @stock.setter
-    def stock(self, stock):
-        self.__stock = stock
+    def stock(self, b):
+        self.__stock = b
 
     @property  
     def modelo(self):
         return self.__modelo
 
     @modelo.setter
-    def modelo(self, modelo):
-        self.__modelo = modelo
+    def modelo(self, b):
+        self.__modelo = b
     
 
     @property  
@@ -42,17 +42,17 @@ class Maquina:
     
 
 class ECG(Maquina):
-    def __init__(self,precio,stock,modelo,emrpesa,derivaciones):
-        super().__init__(self,precio,stock,modelo,emrpesa)
-        self.__derivaciones=derivaciones
+    def __init__(self):
+        super().__init__(self)
+        self.__derivaciones=""
     
     @property  
     def derivaciones(self):
         return self.__derivaciones
 
     @derivaciones.setter
-    def derivaciones(self, derivaciones):
-        self.__derivaciones = derivaciones
+    def derivaciones(self, b):
+        self.__derivaciones = b
 
     def __str__(self):
         return f'{super().__str__()}, numero de derivaciones: {self.derivaciones}'
@@ -74,18 +74,26 @@ class Desfribilador(Maquina):
         return f'{super().__str__()}, energia máxima del desfibrilador: {self.energia}'
     
 class ResonanciaMag(Maquina):
-    def __init__(self,precio,stock,modelo,emrpesa,intensidad):
-        super().__init__(precio,stock,modelo,emrpesa)
-        self.__intensidad=intensidad
+    def __init__(self):
+        super().__init__()
+        self.__intensidad=""
     
     @property  
     def intensidad(self):
         return self.__intensidad
 
     @intensidad.setter
-    def energia(self, intensidad):
-        self.__intensidad = intensidad
+    def energia(self, b):
+        self.__intensidad = b
 
     def __str__(self):
         return f'{super().__str__()}, intensidad del campo magnetico en teslas: {self.intensidad}'
+
+class BaseDatos(Maquina):
+    def __init__(self):
+        self.__inventario = {}
+
     
+    
+    def agregarMaquina(self, Maquina):
+        self.__inventario[Maquina.verModelo()] = Maquina
