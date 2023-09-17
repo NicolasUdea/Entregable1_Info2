@@ -1,12 +1,17 @@
 from Maquina import *
-from funciones import *
 
 class ResonanciaMag(Maquina):
     def __init__(self):
         super().__init__()
-        self.__intensidadCM = 0
-    
+        self.__intensidad = ""
+
+    @property
+    def intensidad(self):
+        return self.__intensidad
+
+    @intensidad.setter
+    def energia(self, b):
+        self.__intensidad = b
+
     def __str__(self):
-        return f'''{super().__str__()}
-Datos de la resonancia magnética:
-        Intensidad del campo magnético: {self.__intensidadCM} T{separador()}'''
+        return f'{super().__str__()}, intensidad del campo magnetico en teslas: {self.intensidad}'

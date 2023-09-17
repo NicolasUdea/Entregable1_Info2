@@ -19,7 +19,7 @@ def verificarFloat(texto):
 
 
 def presionaEnter():
-    input("\nPresione Enter para continuar...")
+    input("Presione Enter para continuar...")
 
 
 def separador():

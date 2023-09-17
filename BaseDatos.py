@@ -4,10 +4,10 @@ from funciones import *
 from Maquina import *
 from ECG import *
 
-class BaseDatos():
+
+class BaseDatos(Maquina):
     def __init__(self):
         self.__inventario = {}
-    
-    def agregarMaquina(self, Maquina):
-        self.__inventario[Maquina.verModelo()] = Maquina
-    
+
+    def agregarMaquina(self, Equipo):
+        self.__inventario[Maquina.modelo] = Equipo

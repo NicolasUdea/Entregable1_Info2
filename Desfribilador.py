@@ -1,17 +1,17 @@
 from Maquina import *
-from funciones import *
 
 class Desfribilador(Maquina):
-    def __init__(self):
-        super().__init__()
-        self.__energiaMax = 0
-    
+    def __init__(self, precio, stock, modelo, emrpesa, energia):
+        super().__init__(precio, stock, modelo, emrpesa)
+        self.__energia = energia
+
+    @property
+    def energia(self):
+        return self.__energia
+
+    @energia.setter
+    def energia(self, energia):
+        self.__energia = energia
+
     def __str__(self):
-        return f'''{super().__str__()}
-    
-Datos desfribilador:
-        Energia maxima: {self.__energiaMax}{separador()}'''
-        
-    def editarEnergiaMax(self, float):
-        self.__energiaMax = float
-        return True
+        return f'{super().__str__()}, energia máxima del desfibrilador: {self.energia}'
