@@ -24,28 +24,37 @@ def main():
         4. Editar datos de máquina.
         5. Salir.
         > """)
+        print(separador())
         if menu == 1:  # Ingresar una nueva máquina.
-            objeto = Maquina()
-            objeto.ID = verificarInt("ingrese el ID de la máquina: ")
-            objeto.precio = verificarFloat("ingrese el precio de la máquina: ")
-            objeto.stock = verificarInt("ingrese el stock: ")
-            objeto.empresa = input("ingrese la empresa: ")
-            objeto.modelo = input("ingrese el modelo de la maquina: ")
+            ID = verificarInt("ingrese el ID de la máquina: ")
+            precio = verificarFloat("ingrese el precio de la máquina: ")
+            stock = verificarInt("ingrese el stock: ")
+            empresa = input("ingrese la empresa: ")
+            modelo = input("ingrese el modelo de la maquina: ")
 
-            tipo_maquina = verificarInt("""Ingrese el tipo de máquina que desea ingresar:
+            tipo_maquina = verificarInt("""Seleccione el tipo de máquina que desea ingresar:
             1. Máquina para electrocardiografía
             2. Desfibrilador hospitalario
             3. Máquina para resonancia magnética
             > """)
             if tipo_maquina == 1:
+                objeto = ECG()
                 objeto.derivaciones = verificarFloat("ingrese el número de derivaciones: ")
 
             elif tipo_maquina == 2:
+                objeto = Desfribilador()
                 objeto.energia = verificarFloat("ingrese la energía máxima del desfibrilador: ")
 
             elif tipo_maquina == 3:
+                objeto = ResonanciaMag()
                 objeto.intensidad = verificarFloat("ingrese la intensidad del campo magnético en teslas: ")
+            objeto.ID = ID
+            objeto.precio = precio
+            objeto.stock = stock
+            objeto.empresa = empresa
+            objeto.modelo = modelo
             BD.agregarMaquina(objeto)
+            print(separador())
             print("Se ha agregado la máquina a la BD de datos")
             print(separador())
 

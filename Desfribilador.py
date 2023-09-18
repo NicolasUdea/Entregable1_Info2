@@ -2,7 +2,7 @@ from Maquina import *
 
 class Desfribilador(Maquina):
     def __init__(self):
-        super().__init__(self)
+        super().__init__()
         self.__energia = 0
 
     @property

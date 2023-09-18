@@ -2,8 +2,8 @@ from Maquina import *
 
 class ECG(Maquina):
     def __init__(self):
-        super().__init__(self)
-        self.__derivaciones = ""
+        super().__init__()
+        self.__derivaciones = 0
 
     @property
     def derivaciones(self):
