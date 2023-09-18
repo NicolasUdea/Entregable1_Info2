@@ -1,9 +1,9 @@
 from Maquina import *
 
 class Desfribilador(Maquina):
-    def __init__(self, precio, stock, modelo, emrpesa, energia):
-        super().__init__(precio, stock, modelo, emrpesa)
-        self.__energia = energia
+    def __init__(self):
+        super().__init__(self)
+        self.__energia = 0
 
     @property
     def energia(self):

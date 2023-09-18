@@ -4,6 +4,15 @@ class Maquina:
         self.__stock = 0
         self.__modelo = ""
         self.__empresa = ""
+        self.__ID = 0
+
+    @property
+    def ID(self):
+        return self.__ID
+
+    @ID.setter
+    def ID(self, identificacion):
+        self.__ID = identificacion
 
     @property
     def precio(self):
@@ -38,4 +47,9 @@ class Maquina:
         self.__empresa = empresa
 
     def __str__(self):
-        return f"precio: {self.precio}su stock es {self.stock}, modelo: {self.modelo},de la empresa:{self.empresa}"
+        return f"""Datos de la maquina:
+        ID: {self.__ID}
+        Precio: {self.__precio}
+        Stock: {self.__stock}
+        Empresa: {self.__empresa}
+        Modelo: {self.__modelo}"""

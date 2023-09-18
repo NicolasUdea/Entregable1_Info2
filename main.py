@@ -13,7 +13,7 @@ def main():
     {separador()}""")
     presionaEnter()
     print(separador())
-    base = BaseDatos()
+    BD = BaseDatos()
 
     # Menú principal
     while True:
@@ -25,11 +25,12 @@ def main():
         5. Salir.
         > """)
         if menu == 1:  # Ingresar una nueva máquina.
-            b = Maquina()
-            b.precio = verificarFloat("ingrese el precio de la máquina: ")
-            b.stock = verificarInt("ingrese el stock: ")
-            b.empresa = input("ingrese la empresa: ")
-            b.modelo = input("ingrese el modelo de la maquina: ")
+            objeto = Maquina()
+            objeto.ID = verificarInt("ingrese el ID de la máquina: ")
+            objeto.precio = verificarFloat("ingrese el precio de la máquina: ")
+            objeto.stock = verificarInt("ingrese el stock: ")
+            objeto.empresa = input("ingrese la empresa: ")
+            objeto.modelo = input("ingrese el modelo de la maquina: ")
 
             tipo_maquina = verificarInt("""Ingrese el tipo de máquina que desea ingresar:
             1. Máquina para electrocardiografía
@@ -37,16 +38,37 @@ def main():
             3. Máquina para resonancia magnética
             > """)
             if tipo_maquina == 1:
-                b.derivaciones = verificarFloat("ingrese el número de derivaciones: ")
+                objeto.derivaciones = verificarFloat("ingrese el número de derivaciones: ")
 
             elif tipo_maquina == 2:
-                b.energia = verificarFloat("ingrese la energía máxima del desfibrilador: ")
+                objeto.energia = verificarFloat("ingrese la energía máxima del desfibrilador: ")
 
             elif tipo_maquina == 3:
-                b.intensidad = verificarFloat("ingrese la intensidad del campo magnético en teslas: ")
-        
-        base.agregarMaquina(b)
+                objeto.intensidad = verificarFloat("ingrese la intensidad del campo magnético en teslas: ")
+            BD.agregarMaquina(objeto)
+            print("Se ha agregado la máquina a la BD de datos")
+            print(separador())
 
+        elif menu == 2:  # Eliminar una máquina.
+            clave = verificarInt("Ingrese el ID de la máquina que desea eliminar: ")
+            BD.eliminarMaquina(clave)
+            print(separador())
+
+        elif menu == 3:  # Selección de una máquina.
+            clave = verificarInt("Ingrese el ID de la máquina que desea seleccionar: ")
+            print(BD.seleccionMaquina(clave))
+
+        elif menu == 4:  # Editar datos de máquina.
+            clave = verificarInt("Ingrese el ID de la máquina que desea editar: ")
+            print(BD.editarMaquina(clave))
+
+        elif menu == 5:  # Salir.
+            print("Gracias por usar el sistema de máquinas médicas.")
+            break
+
+        else:
+            print("Ingrese una opción válida.")
+            print(separador())
 
 if __name__ == '__main__':
     main()
