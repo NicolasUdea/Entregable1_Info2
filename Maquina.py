@@ -5,6 +5,15 @@ class Maquina:
         self.__modelo = ""
         self.__empresa = ""
         self.__ID = 0
+        self.__tipo = ""
+
+    @property
+    def tipo(self):
+        return self.__tipo
+
+    @tipo.setter
+    def tipo(self, tipo):
+        self.__tipo = tipo
 
     @property
     def ID(self):

@@ -39,14 +39,17 @@ def main():
             > """)
             if tipo_maquina == 1:
                 objeto = ECG()
+                objeto.tipo = "ECG"
                 objeto.derivaciones = verificarFloat("ingrese el número de derivaciones: ")
 
             elif tipo_maquina == 2:
                 objeto = Desfribilador()
+                objeto.tipo = "Desfribilador"
                 objeto.energia = verificarFloat("ingrese la energía máxima del desfibrilador: ")
 
             elif tipo_maquina == 3:
                 objeto = ResonanciaMag()
+                objeto.tipo = "ResonanciaMag"
                 objeto.intensidad = verificarFloat("ingrese la intensidad del campo magnético en teslas: ")
             objeto.ID = ID
             objeto.precio = precio
@@ -68,8 +71,20 @@ def main():
             print(BD.seleccionMaquina(clave))
 
         elif menu == 4:  # Editar datos de máquina.
-            clave = verificarInt("Ingrese el ID de la máquina que desea editar: ")
-            print(BD.editarMaquina(clave))
+            while True:
+                continuar = verificarInt("""Seleccione una opción:
+                1. Editar datos de una máquina.
+                2. Salir.
+                > """)
+                if continuar == 1:
+                    clave = verificarInt("Ingrese el ID de la máquina que desea editar: ")
+                    BD.editarMaquina(clave)
+                elif continuar == 2:
+                    break
+                else:
+                    print("Ingrese una opción válida.")
+                    print(separador())
+            print("Datos actualizados")
 
         elif menu == 5:  # Salir.
             print("Gracias por usar el sistema de máquinas médicas.")
